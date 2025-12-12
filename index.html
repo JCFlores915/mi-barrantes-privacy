@@ -5,252 +5,381 @@
   <title>Política de Privacidad y Seguridad - Mi Barrantes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    :root {
+      --primary: #690D72;
+      --primary-dark: #4C0A54;
+      --bg-soft: #F9FAFB;
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --card-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3f4f6;
-      color: #111827;
+      background: radial-gradient(circle at top left, #FDF2FF, #F3E8FF, #EEF2FF);
+      color: var(--text-main);
     }
-    .page {
-      max-width: 900px;
+
+    .shell {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 16px 12px 40px;
+    }
+
+    /* HERO TOP */
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 24px 18px 28px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-logo-wrapper {
+      width: 74px;
+      height: 74px;
+      border-radius: 999px;
+      /* background-color: rgba(255, 255, 255, 0.12); */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      /* border: 1px solid rgba(255, 255, 255, 0.35); */
+    }
+
+    .hero-logo-wrapper img {
+      max-width: 58px;
+      max-height: 58px;
+      object-fit: contain;
+      display: block;
+      /* hacerlo redondo el top */
+      border-top-left-radius: 999px;
+      border-top-right-radius: 999px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: var(--bg-soft);
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #E5E7EB;
+    }
+
+    .hero-meta {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #D1D5DB;
+    }
+
+    /* CARD CONTENT */
+    .page {
+      margin-top: 18px;
       background-color: #ffffff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      min-height: 100vh;
+      border-radius: 20px;
+      padding: 20px 16px 32px;
+      box-shadow: var(--card-shadow);
     }
+
     h1, h2, h3 {
-      color: #111827;
+      color: var(--text-main);
     }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
+
     h2 {
-      margin-top: 1.8rem;
-      font-size: 1.2rem;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
     }
+
+    h3 {
+      margin-top: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
     p {
       line-height: 1.6;
-      margin: 0.4rem 0 0.4rem;
+      margin: 0.3rem 0 0.4rem;
       font-size: 0.95rem;
+      color: var(--text-main);
     }
+
     ul {
       padding-left: 1.1rem;
       font-size: 0.95rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
     }
+
     strong {
       font-weight: 600;
     }
+
+    .section-box {
+      border-left: 3px solid var(--primary);
+      padding-left: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .section-box h2 {
+      margin-top: 0;
+    }
+
     .subtitle {
       color: #4b5563;
       margin-bottom: 1.2rem;
       font-size: 0.9rem;
     }
+
     .last-update {
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
       font-size: 0.85rem;
-      color: #6b7280;
+      color: var(--text-muted);
     }
-    .section-box {
-      border-left: 3px solid #690D72;
-      padding-left: 0.8rem;
-      margin-top: 1rem;
+
+    /* SMALL SCREEN TWEAKS */
+    @media (max-width: 600px) {
+      .shell {
+        padding: 12px 8px 28px;
+      }
+
+      .hero {
+        padding: 18px 14px 22px;
+        border-radius: 18px;
+      }
+
+      .hero-title {
+        font-size: 1.4rem;
+      }
+
+      .page {
+        padding: 16px 12px 26px;
+        border-radius: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header>
-      <h1>Política de Privacidad y Seguridad</h1>
-      <p class="subtitle">
-        Esta política describe cómo la aplicación móvil <strong>“Mi Barrantes”</strong> trata tus datos personales y qué medidas de seguridad se aplican.
-      </p>
-      <p class="last-update">
-        Última actualización: 09 de diciembre de 2025
-      </p>
+  <div class="shell">
+    <!-- HEADER CON LOGO Y COLORES DEL APP -->
+    <header class="hero">
+      <div class="hero-logo-wrapper">
+        <!-- Asegúrate de subir logo.png al mismo repositorio/carpeta -->
+        <img src="logo.png" alt="Logo Funeraria Barrantes" />
+      </div>
+      <div class="hero-text">
+        <h1 class="hero-title">Política de Privacidad y Seguridad</h1>
+        <p class="hero-subtitle">
+          Aplicación móvil <strong>“Mi Barrantes”</strong> – consulta de clientes y contratos mediante código QR.
+        </p>
+        <p class="hero-meta">Última actualización: 09 de diciembre de 2025</p>
+      </div>
     </header>
 
-    <section class="section-box">
-      <h2>1. Responsable del tratamiento</h2>
-      <p>
-        El responsable del tratamiento de los datos recopilados a través de la aplicación es:
-      </p>
-      <p>
-        <strong>Funeraria Barrantes</strong><br />
-        Villa Tepetate, Frente al ministerio de gobernación. Granada, Nicaragua<br />
-        Correo de contacto: <strong>barrantesfuneraria14@gmail.com</strong><br />
-        Teléfono: <strong>+505 8672 0114</strong>
-      </p>
-    </section>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="page">
 
-    <section class="section-box">
-      <h2>2. Descripción de la aplicación</h2>
-      <p>
-        La aplicación <strong>Mi Barrantes</strong> es una herramienta interna/de apoyo para consultar la información de clientes y sus contratos asociados mediante la lectura de un código QR impreso en su carnet.
-      </p>
-      <p>
-        La app:
-      </p>
-      <ul>
-        <li>Usa la <strong>cámara del dispositivo</strong> únicamente para escanear el código QR del cliente.</li>
-        <li>Se conecta al sistema de gestión de contratos de Funeraria Barrantes para <strong>validar al cliente</strong> y mostrar sus contratos y mensualidades.</li>
-        <li>No muestra publicidad de terceros.</li>
-        <li>No utiliza, en este momento, herramientas de analítica de comportamiento (como Google Analytics u otras similares).</li>
-      </ul>
-    </section>
+      <section class="section-box">
+        <h2>1. Responsable del tratamiento</h2>
+        <p>
+          El responsable del tratamiento de los datos recopilados a través de la aplicación es:
+        </p>
+        <p>
+          <strong>Funeraria Barrantes</strong><br />
+          Villa Tepetate, Frente al ministerio de gobernación. Granada, Nicaragua <br />
+          Correo de contacto: <strong>barrantesfuneraria14@gmail.com</strong><br />
+          Teléfono: <strong>+505 8672 0114</strong>
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>3. Datos que se recopilan</h2>
-      <p>
-        La aplicación no requiere que el usuario cree una cuenta propia en la app. Los datos procesados provienen del código QR y de la base de datos de Funeraria Barrantes.
-      </p>
+      <section class="section-box">
+        <h2>2. Descripción de la aplicación</h2>
+        <p>
+          La aplicación <strong>Mi Barrantes</strong> es una herramienta interna/de apoyo para consultar la información de clientes y sus contratos asociados mediante la lectura de un código QR impreso en su carnet.
+        </p>
+        <p>La app:</p>
+        <ul>
+          <li>Usa la <strong>cámara del dispositivo</strong> únicamente para escanear el código QR del cliente.</li>
+          <li>Se conecta al sistema de gestión de contratos de Funeraria Barrantes para <strong>validar al cliente</strong> y mostrar sus contratos y mensualidades.</li>
+          <li>No muestra publicidad de terceros.</li>
+          <li>No utiliza, en este momento, herramientas de analítica de comportamiento (como Google Analytics u otras similares).</li>
+        </ul>
+      </section>
 
-      <h3>3.1. Datos obtenidos mediante el código QR</h3>
-      <p>Al escanear el código QR se obtiene un identificador asociado al cliente, por ejemplo:</p>
-      <ul>
-        <li><strong>Número de persona / ID de cliente</strong>.</li>
-      </ul>
-      <p>
-        Con ese identificador la app consulta al servidor para recuperar los datos del cliente ya existentes en el sistema.
-      </p>
+      <section class="section-box">
+        <h2>3. Datos que se recopilan</h2>
+        <p>
+          La aplicación no requiere que el usuario cree una cuenta propia en la app. Los datos procesados provienen del código QR y de la base de datos de Funeraria Barrantes.
+        </p>
 
-      <h3>3.2. Datos del cliente consultados en el sistema</h3>
-      <p>
-        Al encontrar un cliente válido, la app puede mostrar, entre otros:
-      </p>
-      <ul>
-        <li>Nombre y apellidos.</li>
-        <li>Número de identificación.</li>
-        <li>Género.</li>
-        <li>Departamento y municipio.</li>
-        <li>Contratos vigentes o históricos (plan contratado, estado, etc.).</li>
-        <li>Mensualidades/cuotas: montos, estados de pago, fechas de cobro y abono.</li>
-      </ul>
-      <p>
-        Estos datos ya se encuentran registrados en los sistemas de Funeraria Barrantes y la app únicamente los <strong>consulta y muestra</strong>, no los modifica.
-      </p>
+        <h3>3.1. Datos obtenidos mediante el código QR</h3>
+        <p>Al escanear el código QR se obtiene un identificador asociado al cliente, por ejemplo:</p>
+        <ul>
+          <li><strong>Número de persona / ID de cliente</strong>.</li>
+        </ul>
+        <p>
+          Con ese identificador la app consulta al servidor para recuperar los datos del cliente ya existentes en el sistema.
+        </p>
 
-      <h3>3.3. Permisos del dispositivo</h3>
-      <p>
-        La app solicita el permiso de <strong>cámara</strong> del dispositivo exclusivamente para poder leer el código QR. No se toman fotografías ni videos con otros fines.
-      </p>
-    </section>
+        <h3>3.2. Datos del cliente consultados en el sistema</h3>
+        <p>
+          Al encontrar un cliente válido, la app puede mostrar, entre otros:
+        </p>
+        <ul>
+          <li>Nombre y apellidos.</li>
+          <li>Número de identificación.</li>
+          <li>Género.</li>
+          <li>Departamento y municipio.</li>
+          <li>Contratos vigentes o históricos (plan contratado, estado, etc.).</li>
+          <li>Mensualidades/cuotas: montos, estados de pago, fechas de cobro y abono.</li>
+        </ul>
+        <p>
+          Estos datos ya se encuentran registrados en los sistemas de Funeraria Barrantes y la app únicamente los <strong>consulta y muestra</strong>, no los modifica.
+        </p>
 
-    <section class="section-box">
-      <h2>4. Finalidad del tratamiento de los datos</h2>
-      <p>
-        Los datos recopilados y consultados a través de la app se utilizan con las siguientes finalidades:
-      </p>
-      <ul>
-        <li>Verificar la validez del cliente a partir del código QR de su carnet.</li>
-        <li>Mostrar los datos básicos del cliente a efectos de identificación.</li>
-        <li>Consultar y mostrar los contratos asociados al cliente.</li>
-        <li>Mostrar el detalle de las mensualidades/cuotas, incluyendo montos, estado de pago y fechas relevantes.</li>
-      </ul>
-      <p>
-        Los datos no se utilizan para crear perfiles comerciales, publicidad dirigida ni venta a terceros.
-      </p>
-    </section>
+        <h3>3.3. Permisos del dispositivo</h3>
+        <p>
+          La app solicita el permiso de <strong>cámara</strong> del dispositivo exclusivamente para poder leer el código QR. No se toman fotografías ni videos con otros fines.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>5. Base legal del tratamiento</h2>
-      <p>
-        El tratamiento de los datos se realiza con base en:
-      </p>
-      <ul>
-        <li>La <strong>relación contractual</strong> entre el cliente y Funeraria Barrantes (gestión de contratos y servicios funerarios).</li>
-        <li>El <strong>interés legítimo</strong> de la empresa en administrar correctamente sus contratos, pagos y servicios asociados.</li>
-      </ul>
-    </section>
+      <section class="section-box">
+        <h2>4. Finalidad del tratamiento de los datos</h2>
+        <p>
+          Los datos recopilados y consultados a través de la app se utilizan con las siguientes finalidades:
+        </p>
+        <ul>
+          <li>Verificar la validez del cliente a partir del código QR de su carnet.</li>
+          <li>Mostrar los datos básicos del cliente a efectos de identificación.</li>
+          <li>Consultar y mostrar los contratos asociados al cliente.</li>
+          <li>Mostrar el detalle de las mensualidades/cuotas, incluyendo montos, estado de pago y fechas relevantes.</li>
+        </ul>
+        <p>
+          Los datos no se utilizan para crear perfiles comerciales, publicidad dirigida ni venta a terceros.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>6. Conservación de los datos</h2>
-      <p>
-        La aplicación no almacena de forma permanente la información personal en el dispositivo. Los datos se consultan desde el servidor cada vez que se escanea un código QR.
-      </p>
-      <p>
-        Los datos personales se conservan en los sistemas de Funeraria Barrantes durante el tiempo necesario para cumplir con las obligaciones contractuales, legales y administrativas aplicables.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>5. Base legal del tratamiento</h2>
+        <p>
+          El tratamiento de los datos se realiza con base en:
+        </p>
+        <ul>
+          <li>La <strong>relación contractual</strong> entre el cliente y Funeraria Barrantes (gestión de contratos y servicios funerarios).</li>
+          <li>El <strong>interés legítimo</strong> de la empresa en administrar correctamente sus contratos, pagos y servicios asociados.</li>
+        </ul>
+      </section>
 
-    <section class="section-box">
-      <h2>7. Destinatarios y transferencias de datos</h2>
-      <p>
-        Los datos personales no se venden ni se ceden a terceros con fines comerciales.
-      </p>
-      <p>
-        Podrán tener acceso a los datos:
-      </p>
-      <ul>
-        <li>El personal autorizado de Funeraria Barrantes.</li>
-        <li>Proveedores de servicios tecnológicos (por ejemplo, hosting o infraestructura del sistema) que actúan como encargados de tratamiento y están sujetos a obligaciones de confidencialidad.</li>
-      </ul>
-      <p>
-        Si se realizan transferencias internacionales de datos (por ejemplo, si el servidor se aloja en otro país), estas se harán conforme a la normativa aplicable y con las garantías adecuadas.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>6. Conservación de los datos</h2>
+        <p>
+          La aplicación no almacena de forma permanente la información personal en el dispositivo. Los datos se consultan desde el servidor cada vez que se escanea un código QR.
+        </p>
+        <p>
+          Los datos personales se conservan en los sistemas de Funeraria Barrantes durante el tiempo necesario para cumplir con las obligaciones contractuales, legales y administrativas aplicables.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>8. Medidas de seguridad</h2>
-      <p>
-        Funeraria Barrantes aplica medidas técnicas y organizativas razonables para proteger los datos personales tratados a través de la app y de sus sistemas, incluyendo:
-      </p>
-      <ul>
-        <li>Uso de conexiones seguras (por ejemplo, HTTPS) cuando corresponde.</li>
-        <li>Control de acceso y credenciales para el personal autorizado.</li>
-        <li>Buenas prácticas de desarrollo seguro en la aplicación y en el backend asociado.</li>
-      </ul>
-      <p>
-        No obstante, ningún sistema es completamente infalible, por lo que no es posible garantizar una seguridad absoluta frente a cualquier incidente.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>7. Destinatarios y transferencias de datos</h2>
+        <p>
+          Los datos personales no se venden ni se ceden a terceros con fines comerciales.
+        </p>
+        <p>
+          Podrán tener acceso a los datos:
+        </p>
+        <ul>
+          <li>El personal autorizado de Funeraria Barrantes.</li>
+          <li>Proveedores de servicios tecnológicos (por ejemplo, hosting o infraestructura del sistema) que actúan como encargados de tratamiento y están sujetos a obligaciones de confidencialidad.</li>
+        </ul>
+        <p>
+          Si se realizan transferencias internacionales de datos (por ejemplo, si el servidor se aloja en otro país), estas se harán conforme a la normativa aplicable y con las garantías adecuadas.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>9. Derechos de los titulares de los datos</h2>
-      <p>
-        Como titular de los datos, el cliente puede ejercer, cuando corresponda según la normativa aplicable, los siguientes derechos respecto a su información personal:
-      </p>
-      <ul>
-        <li>Acceso a sus datos personales.</li>
-        <li>Rectificación de datos inexactos o desactualizados.</li>
-        <li>Supresión de los datos cuando sea legalmente procedente.</li>
-        <li>Oposición o limitación del tratamiento en determinados supuestos.</li>
-      </ul>
-      <p>
-        Para ejercer estos derechos, el cliente puede contactar a Funeraria Barrantes a través del correo electrónico: <strong>barrantesfuneraria14@gmail.com</strong>.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>8. Medidas de seguridad</h2>
+        <p>
+          Funeraria Barrantes aplica medidas técnicas y organizativas razonables para proteger los datos personales tratados a través de la app y de sus sistemas, incluyendo:
+        </p>
+        <ul>
+          <li>Uso de conexiones seguras (por ejemplo, HTTPS) cuando corresponde.</li>
+          <li>Control de acceso y credenciales para el personal autorizado.</li>
+          <li>Buenas prácticas de desarrollo seguro en la aplicación y en el backend asociado.</li>
+        </ul>
+        <p>
+          No obstante, ningún sistema es completamente infalible, por lo que no es posible garantizar una seguridad absoluta frente a cualquier incidente.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>10. Uso por parte de menores de edad</h2>
-      <p>
-        La aplicación <strong>no está dirigida a menores de edad</strong>. Está pensada para uso interno o por personal autorizado que gestiona la información de clientes de Funeraria Barrantes.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>9. Derechos de los titulares de los datos</h2>
+        <p>
+          Como titular de los datos, el cliente puede ejercer, cuando corresponda según la normativa aplicable, los siguientes derechos respecto a su información personal:
+        </p>
+        <ul>
+          <li>Acceso a sus datos personales.</li>
+          <li>Rectificación de datos inexactos o desactualizados.</li>
+          <li>Supresión de los datos cuando sea legalmente procedente.</li>
+          <li>Oposición o limitación del tratamiento en determinados supuestos.</li>
+        </ul>
+        <p>
+          Para ejercer estos derechos, el cliente puede contactar a Funeraria Barrantes a través del correo electrónico:
+          <strong>barrantesfuneraria14@gmail.com</strong>.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>11. Cambios en esta política de privacidad</h2>
-      <p>
-        Funeraria Barrantes se reserva el derecho de actualizar o modificar esta Política de Privacidad y Seguridad cuando sea necesario para reflejar cambios en la app, en el tratamiento de datos o en la normativa aplicable.
-      </p>
-      <p>
-        Cualquier cambio relevante será publicado en esta misma página. La versión vigente será la que se encuentre disponible en el momento de uso de la aplicación.
-      </p>
-    </section>
+      <section class="section-box">
+        <h2>10. Uso por parte de menores de edad</h2>
+        <p>
+          La aplicación <strong>no está dirigida a menores de edad</strong>. Está pensada para uso interno o por personal autorizado que gestiona la información de clientes de Funeraria Barrantes.
+        </p>
+      </section>
 
-    <section class="section-box">
-      <h2>12. Contacto</h2>
-      <p>
-        Si tienes dudas, comentarios o deseas ejercer tus derechos relacionados con la protección de datos, puedes contactar a:
-      </p>
-      <p>
-        <strong>Funeraria Barrantes</strong><br />
-        Correo: <strong>barrantesfuneraria14@gmail.com</strong><br />
-        Teléfono: <strong>+505 8672 0114</strong>
-      </p>
-    </section>
-  </main>
+      <section class="section-box">
+        <h2>11. Cambios en esta política de privacidad</h2>
+        <p>
+          Funeraria Barrantes se reserva el derecho de actualizar o modificar esta Política de Privacidad y Seguridad cuando sea necesario para reflejar cambios en la app, en el tratamiento de datos o en la normativa aplicable.
+        </p>
+        <p>
+          Cualquier cambio relevante será publicado en esta misma página. La versión vigente será la que se encuentre disponible en el momento de uso de la aplicación.
+        </p>
+      </section>
+
+      <section class="section-box">
+        <h2>12. Contacto</h2>
+        <p>
+          Si tienes dudas, comentarios o deseas ejercer tus derechos relacionados con la protección de datos, puedes contactar a:
+        </p>
+        <p>
+          <strong>Funeraria Barrantes</strong><br />
+          Correo: <strong>barrantesfuneraria14@gmail.com</strong><br />
+          Teléfono: <strong>+505 8672 0114</strong>
+        </p>
+      </section>
+
+    </main>
+  </div>
 </body>
 </html>
