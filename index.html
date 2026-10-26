@@ -224,7 +224,7 @@
           <li>Se conecta al sistema de gestión de contratos de Funeraria Barrantes para <strong>validar al cliente</strong> y mostrar sus contratos y mensualidades.</li>
           <li>No muestra publicidad de terceros.</li>
           <li>No utiliza, en este momento, herramientas de analítica de comportamiento (como Google Analytics u otras similares).</li>
-          <li>Ofrece una demostración identificada como <strong>datos ficticios</strong>, separada de las cuentas reales y sin consultar ni modificar datos de clientes.</li>
+          <li>Puede comprobar si hay una actualización disponible en Google Play y abrir la tienda cuando el cliente elige actualizar.</li>
         </ul>
       </section>
 
@@ -263,7 +263,7 @@
         <p>
           La app solicita el permiso de <strong>cámara</strong> del dispositivo exclusivamente para poder leer el código QR. No se toman fotografías ni videos con otros fines.
         </p>
-        <p>La aplicación no solicita ubicación, contactos, micrófono ni acceso a los archivos personales del dispositivo. La demostración puede abrirse sin conceder permiso de cámara.</p>
+        <p>La aplicación no solicita ubicación, contactos, micrófono ni acceso a los archivos personales del dispositivo.</p>
 
         <h3>3.4. Identificación de instalación y sesiones</h3>
         <p>Para gestionar el acceso, la app genera un identificador aleatorio de instalación y transmite ese identificador y una etiqueta técnica del dispositivo (plataforma y versión del sistema operativo). No utiliza el IMEI, el número de serie físico ni un identificador publicitario para esta finalidad.</p>
@@ -273,6 +273,10 @@
         <h3>3.5. Diagnósticos del lector QR en Android</h3>
         <p>El lector utiliza Google ML Kit. Conforme a la <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener noreferrer">documentación del proveedor</a>, este SDK recopila información técnica del dispositivo y la app, identificadores de instalación, métricas de rendimiento y eventos o códigos de error del lector para diagnóstico y analítica técnica de uso. Esta comunicación utiliza HTTPS. No se utiliza para publicidad dirigida ni para rastrear la ubicación del cliente.</p>
         <p>Estos diagnósticos técnicos son distintos de la analítica comercial de comportamiento mencionada anteriormente. La app no incorpora Google Analytics ni publicidad de terceros.</p>
+
+        <h3>3.6. Comprobación de actualizaciones en Android</h3>
+        <p>La app utiliza la biblioteca oficial de Google Play para consultar si existe una actualización disponible para la instalación. Según la <a href="https://developer.android.com/guide/playcore/in-app-updates" rel="noopener noreferrer">documentación de Google</a>, Play Store procesa metadatos técnicos del dispositivo, la versión de la aplicación y los módulos o paquetes instalados de la propia app para determinar la disponibilidad y el tamaño de la actualización. Los datos se cifran, no se transfieren a terceros y Google los elimina según un plazo de conservación fijo establecido por el proveedor.</p>
+        <p>Mi Barrantes no envía el QR del cliente, sus contratos ni sus tokens de sesión a esta biblioteca. La actualización es opcional: el cliente puede cerrar el aviso y continuar usando la app o abrir la ficha de Google Play.</p>
       </section>
 
       <section class="section-box">
@@ -287,6 +291,7 @@
           <li>Mostrar el detalle de las mensualidades/cuotas, incluyendo montos, estado de pago y fechas relevantes.</li>
           <li>Mantener, renovar y revocar sesiones de acceso, y prevenir usos no autorizados.</li>
           <li>Diagnosticar el funcionamiento técnico del lector QR.</li>
+          <li>Consultar la disponibilidad de actualizaciones de la aplicación en Google Play.</li>
         </ul>
         <p>
           Los datos no se utilizan para crear perfiles comerciales, publicidad dirigida ni venta a terceros.
@@ -307,7 +312,7 @@
       <section class="section-box">
         <h2>6. Conservación de los datos</h2>
         <p>
-          La aplicación consulta el perfil, los contratos y las cuotas desde el servidor y mantiene esa información en memoria durante su uso. No conserva una copia permanente del calendario ni de los contratos para consulta sin conexión. En el almacenamiento seguro del dispositivo se conservan el identificador de instalación y los tokens necesarios para recuperar la sesión mientras sea válida. La demostración utiliza ejemplos incluidos en la app, sin una sesión real ni tokens de acceso a clientes.
+          La aplicación consulta el perfil, los contratos y las cuotas desde el servidor y mantiene esa información en memoria durante su uso. No conserva una copia permanente del calendario ni de los contratos para consulta sin conexión. En el almacenamiento seguro del dispositivo se conservan el identificador de instalación y los tokens necesarios para recuperar la sesión mientras sea válida.
         </p>
         <p>
           Los datos personales se conservan en los sistemas de Funeraria Barrantes durante el tiempo necesario para cumplir con las obligaciones contractuales, legales y administrativas aplicables.
@@ -325,7 +330,7 @@
         <ul>
           <li>El personal autorizado de Funeraria Barrantes.</li>
           <li>Proveedores de servicios tecnológicos (por ejemplo, hosting o infraestructura del sistema) que actúan como encargados de tratamiento y están sujetos a obligaciones de confidencialidad.</li>
-          <li>Google, como proveedor del SDK del lector QR de Android, recibe los diagnósticos técnicos descritos en el apartado 3.5, conforme a sus condiciones y documentación.</li>
+          <li>Google, como proveedor del SDK del lector QR de Android y de Play Store, procesa la información técnica descrita en los apartados 3.5 y 3.6, conforme a sus condiciones y documentación.</li>
         </ul>
         <p>
           Si se realizan transferencias internacionales de datos (por ejemplo, si el servidor se aloja en otro país), estas se harán conforme a la normativa aplicable y con las garantías adecuadas.
